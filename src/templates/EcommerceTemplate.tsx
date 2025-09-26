@@ -5,7 +5,7 @@ import { SocialLinks } from '@/components/SocialLinks'
 import { FloatingCart } from '@/components/FloatingCart'
 import { Link } from 'react-router-dom'
 import { Button } from '@/components/ui/button'
-import { ShoppingCart } from 'lucide-react'
+import { ShoppingCart, Heart, Shield, Award } from 'lucide-react'
 import { useCartUI } from '@/components/CartProvider'
 import { useCart } from '@/contexts/CartContext'
 import { Input } from '@/components/ui/input'
@@ -41,13 +41,19 @@ export const EcommerceTemplate = ({
   const totalItems = getTotalItems()
 
   const header = (
-    <div className={`py-4 ${headerClassName}`}>
+    <div className={`py-4 bg-white/95 backdrop-blur-sm border-b border-baby-green-100 sticky top-0 z-40 ${headerClassName}`}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between">
           {/* Logo */}
           <div className="flex items-center">
-            <Link to="/">
-              <BrandLogoLeft />
+            <Link to="/" className="flex items-center space-x-3">
+              <div className="w-10 h-10 bg-baby-green-500 rounded-full flex items-center justify-center">
+                <Heart className="h-6 w-6 text-white" />
+              </div>
+              <div>
+                <h1 className="text-xl font-bold text-baby-green-800">BabyFood</h1>
+                <p className="text-xs text-baby-green-600">Nutrición Natural</p>
+              </div>
             </Link>
           </div>
 
@@ -56,16 +62,20 @@ export const EcommerceTemplate = ({
             <nav className="flex space-x-6">
               <Link 
                 to="/" 
-                className="text-foreground/70 hover:text-foreground transition-colors"
+                className="text-baby-green-700 hover:text-baby-green-900 transition-colors font-medium"
               >
-                Home
+                Inicio
               </Link>
               <Link 
                 to="/blog" 
-                className="text-foreground/70 hover:text-foreground transition-colors"
+                className="text-baby-green-700 hover:text-baby-green-900 transition-colors font-medium"
               >
-                Blog
+                Consejos
               </Link>
+              <div className="flex items-center space-x-1 text-baby-green-700">
+                <Shield className="h-4 w-4" />
+                <span className="text-sm font-medium">100% Seguro</span>
+              </div>
             </nav>
           </div>
 
@@ -75,11 +85,11 @@ export const EcommerceTemplate = ({
               variant="ghost"
               size="icon"
               onClick={openCart}
-              className="relative"
+              className="relative hover:bg-baby-green-50 rounded-xl"
             >
-              <ShoppingCart className="h-5 w-5" />
+              <ShoppingCart className="h-6 w-6 text-baby-green-700" />
               {totalItems > 0 && (
-                <span className="absolute -top-2 -right-2 bg-primary text-primary-foreground text-xs font-bold rounded-full h-5 w-5 flex items-center justify-center">
+                <span className="absolute -top-2 -right-2 bg-baby-orange-500 text-white text-xs font-bold rounded-full h-6 w-6 flex items-center justify-center animate-bounce-gentle">
                   {totalItems > 99 ? '99+' : totalItems}
                 </span>
               )}
@@ -90,7 +100,7 @@ export const EcommerceTemplate = ({
         {/* Page Title */}
         {pageTitle && (
           <div className="mt-6">
-            <h1 className="text-3xl font-bold text-foreground">
+            <h1 className="text-3xl font-bold text-baby-green-800">
               {pageTitle}
             </h1>
           </div>
@@ -100,45 +110,108 @@ export const EcommerceTemplate = ({
   )
 
   const footer = (
-    <div className={`bg-black text-white py-12 ${footerClassName}`}>
+    <div className={`bg-baby-green-800 text-white py-16 ${footerClassName}`}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           {/* Brand */}
-          <div>
-            <BrandLogoLeft />
-            <p className="mt-4 text-white/70">
-              Your trusted online store
+          <div className="md:col-span-2">
+            <div className="flex items-center space-x-3 mb-4">
+              <div className="w-12 h-12 bg-baby-orange-500 rounded-full flex items-center justify-center">
+                <Heart className="h-7 w-7 text-white" />
+              </div>
+              <div>
+                <h3 className="text-2xl font-bold text-white">BabyFood</h3>
+                <p className="text-baby-green-200">Nutrición Natural</p>
+              </div>
+            </div>
+            <p className="text-baby-green-200 mb-6 max-w-md">
+              Comprometidos con la nutrición saludable de tu bebé. 
+              Productos orgánicos, seguros y deliciosos para cada etapa de crecimiento.
             </p>
+            
+            {/* Trust Badges */}
+            <div className="flex flex-wrap gap-4">
+              <div className="flex items-center space-x-2 bg-baby-green-700 rounded-lg px-3 py-2">
+                <Shield className="h-4 w-4 text-baby-green-200" />
+                <span className="text-sm text-baby-green-200">Certificado Orgánico</span>
+              </div>
+              <div className="flex items-center space-x-2 bg-baby-green-700 rounded-lg px-3 py-2">
+                <Award className="h-4 w-4 text-baby-green-200" />
+                <span className="text-sm text-baby-green-200">Calidad Premium</span>
+              </div>
+            </div>
           </div>
 
           {/* Links */}
           <div>
-            <h3 className="font-semibold mb-4 text-white">Links</h3>
-            <div className="space-y-2">
+            <h3 className="font-semibold mb-4 text-white text-lg">Navegación</h3>
+            <div className="space-y-3">
               <Link 
                 to="/" 
-                className="block text-white/70 hover:text-white transition-colors"
+                className="block text-baby-green-200 hover:text-white transition-colors"
               >
-                Home
+                Inicio
               </Link>
               <Link 
                 to="/blog" 
-                className="block text-white/70 hover:text-white transition-colors"
+                className="block text-baby-green-200 hover:text-white transition-colors"
               >
-                Blog
+                Consejos de Nutrición
               </Link>
+              <a 
+                href="#" 
+                className="block text-baby-green-200 hover:text-white transition-colors"
+              >
+                Sobre Nosotros
+              </a>
+              <a 
+                href="#" 
+                className="block text-baby-green-200 hover:text-white transition-colors"
+              >
+                Contacto
+              </a>
             </div>
           </div>
 
-          {/* Social Links */}
+          {/* Newsletter */}
           <div>
-            <h3 className="font-semibold mb-4 text-white">Follow Us</h3>
-            <SocialLinks />
+            <h3 className="font-semibold mb-4 text-white text-lg">Mantente Informado</h3>
+            <p className="text-baby-green-200 mb-4 text-sm">
+              Recibe consejos de nutrición y ofertas especiales
+            </p>
+            <div className="space-y-3">
+              <Input 
+                type="email" 
+                placeholder="tu@email.com" 
+                className="bg-baby-green-700 border-baby-green-600 text-white placeholder:text-baby-green-300 focus:border-baby-orange-400"
+              />
+              <Button className="w-full bg-baby-orange-500 hover:bg-baby-orange-600 text-white font-semibold">
+                Suscribirse
+              </Button>
+            </div>
+            
+            {/* Social Links */}
+            <div className="mt-6">
+              <h4 className="font-medium mb-3 text-white">Síguenos</h4>
+              <SocialLinks />
+            </div>
           </div>
         </div>
 
-        <div className="mt-8 pt-8 border-t border-white/20 text-center text-white/70">
-          <p>&copy; 2024 Your Store. All rights reserved.</p>
+        <div className="mt-12 pt-8 border-t border-baby-green-700">
+          <div className="flex flex-col md:flex-row justify-between items-center">
+            <p className="text-baby-green-200 text-sm">
+              &copy; 2024 BabyFood. Todos los derechos reservados.
+            </p>
+            <div className="flex space-x-6 mt-4 md:mt-0">
+              <a href="#" className="text-baby-green-200 hover:text-white text-sm transition-colors">
+                Política de Privacidad
+              </a>
+              <a href="#" className="text-baby-green-200 hover:text-white text-sm transition-colors">
+                Términos de Servicio
+              </a>
+            </div>
+          </div>
         </div>
       </div>
     </div>
