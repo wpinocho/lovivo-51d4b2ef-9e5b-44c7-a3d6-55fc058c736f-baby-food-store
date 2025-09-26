@@ -5,7 +5,7 @@ import { SocialLinks } from '@/components/SocialLinks'
 import { FloatingCart } from '@/components/FloatingCart'
 import { Link } from 'react-router-dom'
 import { Button } from '@/components/ui/button'
-import { ShoppingCart, Heart, Shield, Award } from 'lucide-react'
+import { ShoppingCart, Heart, Shield, Award, Calculator, Users } from 'lucide-react'
 import { useCartUI } from '@/components/CartProvider'
 import { useCart } from '@/contexts/CartContext'
 import { Input } from '@/components/ui/input'
@@ -65,6 +65,20 @@ export const EcommerceTemplate = ({
                 className="text-baby-green-700 hover:text-baby-green-900 transition-colors font-medium"
               >
                 Inicio
+              </Link>
+              <Link 
+                to="/about" 
+                className="text-baby-green-700 hover:text-baby-green-900 transition-colors font-medium flex items-center gap-1"
+              >
+                <Users className="h-4 w-4" />
+                Sobre Nosotros
+              </Link>
+              <Link 
+                to="/shipping-calculator" 
+                className="text-baby-green-700 hover:text-baby-green-900 transition-colors font-medium flex items-center gap-1"
+              >
+                <Calculator className="h-4 w-4" />
+                Envíos
               </Link>
               <Link 
                 to="/blog" 
@@ -153,17 +167,23 @@ export const EcommerceTemplate = ({
                 Inicio
               </Link>
               <Link 
+                to="/about" 
+                className="block text-baby-green-200 hover:text-white transition-colors"
+              >
+                Sobre Nosotros
+              </Link>
+              <Link 
+                to="/shipping-calculator" 
+                className="block text-baby-green-200 hover:text-white transition-colors"
+              >
+                Calculadora de Envíos
+              </Link>
+              <Link 
                 to="/blog" 
                 className="block text-baby-green-200 hover:text-white transition-colors"
               >
                 Consejos de Nutrición
               </Link>
-              <a 
-                href="#" 
-                className="block text-baby-green-200 hover:text-white transition-colors"
-              >
-                Sobre Nosotros
-              </a>
               <a 
                 href="#" 
                 className="block text-baby-green-200 hover:text-white transition-colors"
